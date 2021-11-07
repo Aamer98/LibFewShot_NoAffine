@@ -86,7 +86,7 @@ class ConvBlock(nn.Module):
     def __init__(self, in_c, out_c, k, s=1, p=0):
         super(ConvBlock, self).__init__()
         self.conv = nn.Conv2d(in_c, out_c, k, stride=s, padding=p)
-        self.bn = nn.BatchNorm2d(out_c)
+        self.bn = nn.BatchNorm2d(out_c, affine = False)
 
     def forward(self, x):
         return self.bn(self.conv(x))

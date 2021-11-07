@@ -11,7 +11,7 @@ import torch.nn.functional as F
 class BasicBlock(nn.Module):
     def __init__(self, in_planes, out_planes, stride, dropRate=0.0):
         super(BasicBlock, self).__init__()
-        self.bn1 = nn.BatchNorm2d(in_planes)
+        self.bn1 = nn.BatchNorm2d(in_planes, affine = False)
         self.relu1 = nn.ReLU(inplace=True)
         self.conv1 = nn.Conv2d(
             in_planes,
@@ -21,7 +21,7 @@ class BasicBlock(nn.Module):
             padding=1,
             bias=False,
         )
-        self.bn2 = nn.BatchNorm2d(out_planes)
+        self.bn2 = nn.BatchNorm2d(out_planes, affine = False)
         self.relu2 = nn.ReLU(inplace=True)
         self.conv2 = nn.Conv2d(
             out_planes,
@@ -103,7 +103,7 @@ class WideResNet(nn.Module):
         # 3rd block
         self.block3 = NetworkBlock(n, nChannels[2], nChannels[3], block, 2, dropRate)
         # global average pooling and classifier
-        self.bn1 = nn.BatchNorm2d(nChannels[3])
+        self.bn1 = nn.BatchNorm2d(nChannels[3], affine = False)
         self.relu = nn.ReLU(inplace=True)
         # self.fc = nn.Linear(nChannels[3], num_classes)
         self.nChannels = nChannels[3]
@@ -113,8 +113,9 @@ class WideResNet(nn.Module):
                 n = m.kernel_size[0] * m.kernel_size[1] * m.out_channels
                 m.weight.data.normal_(0, math.sqrt(2.0 / n))
             elif isinstance(m, nn.BatchNorm2d):
-                m.weight.data.fill_(1)
-                m.bias.data.zero_()
+                #m.weight.data.fill_(1)
+                #m.bias.data.zero_()
+                pass
             elif isinstance(m, nn.Linear):
                 m.bias.data.zero_()
 

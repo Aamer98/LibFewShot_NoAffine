@@ -81,7 +81,7 @@ class ATL_Layer(nn.Module):
                 stride=1,
                 bias=False,
             ),
-            nn.BatchNorm2d(self.feat_dim),
+            nn.BatchNorm2d(self.feat_dim, affine = False),
             nn.LeakyReLU(0.2, inplace=True),
         )
 

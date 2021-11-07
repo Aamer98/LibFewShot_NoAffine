@@ -172,10 +172,10 @@ class BasicBlockMTL(nn.Module):
     def __init__(self, inplanes, planes, stride=1, downsample=None, MTL=False):
         super(BasicBlockMTL, self).__init__()
         self.conv1 = conv3x3MTL(inplanes, planes, stride, MTL=MTL)
-        self.bn1 = nn.BatchNorm2d(planes)
+        self.bn1 = nn.BatchNorm2d(planes, affine = False)
         self.relu = nn.ReLU(inplace=True)
         self.conv2 = conv3x3MTL(planes, planes, MTL=MTL)
-        self.bn2 = nn.BatchNorm2d(planes)
+        self.bn2 = nn.BatchNorm2d(planes, affine = False)
         self.downsample = downsample
         self.stride = stride
 
@@ -205,7 +205,7 @@ class ResNetMTLOfficial(nn.Module):
         block = BasicBlockMTL
         self.inplanes = iChannels = 80
         self.conv1 = self.Conv2d(3, iChannels, kernel_size=3, stride=1, padding=1, MTL=MTL)
-        self.bn1 = nn.BatchNorm2d(iChannels)
+        self.bn1 = nn.BatchNorm2d(iChannels, affine = False)
         self.relu = nn.ReLU(inplace=True)
         self.layer1 = self._make_layer(block, 160, 4, stride=2, MTL=MTL)
         self.layer2 = self._make_layer(block, 320, 4, stride=2, MTL=MTL)
@@ -216,8 +216,9 @@ class ResNetMTLOfficial(nn.Module):
             if isinstance(m, self.Conv2d):
                 nn.init.kaiming_normal_(m.weight, mode="fan_out", nonlinearity="relu")
             elif isinstance(m, nn.BatchNorm2d):
-                nn.init.constant_(m.weight, 1)
-                nn.init.constant_(m.bias, 0)
+                #nn.init.constant_(m.weight, 1)
+                #nn.init.constant_(m.bias, 0)
+                pass
 
     def _make_layer(self, block, planes, blocks, stride=1, MTL=False):
         downsample = None
@@ -231,7 +232,7 @@ class ResNetMTLOfficial(nn.Module):
                     bias=False,
                     MTL=MTL,
                 ),
-                nn.BatchNorm2d(planes * block.expansion),
+                nn.BatchNorm2d(planes * block.expansion, affine = False),
             )
 
         layers = []

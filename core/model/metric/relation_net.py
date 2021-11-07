@@ -31,11 +31,11 @@ class RelationLayer(nn.Module):
         super(RelationLayer, self).__init__()
         self.layers = nn.Sequential(
             nn.Conv2d(feat_dim * 2, feat_dim, kernel_size=3, padding=0),
-            nn.BatchNorm2d(feat_dim, momentum=1, affine=True),
+            nn.BatchNorm2d(feat_dim, momentum=1, affine=False),
             nn.ReLU(inplace=True),
             nn.MaxPool2d(2),
             nn.Conv2d(feat_dim, feat_dim, kernel_size=3, padding=0),
-            nn.BatchNorm2d(feat_dim, momentum=1, affine=True),
+            nn.BatchNorm2d(feat_dim, momentum=1, affine = False),
             nn.ReLU(inplace=True),
             nn.MaxPool2d(2),
         )

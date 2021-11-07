@@ -99,7 +99,7 @@ class VERSA(MetaModel):
         self.feat_dim = feat_dim
         self.sample_num = sample_num
         self.h = nn.Sequential(
-            nn.Linear(feat_dim, d_theta), nn.BatchNorm1d(d_theta), nn.ReLU(), nn.Dropout(drop_rate)
+            nn.Linear(feat_dim, d_theta), nn.BatchNorm1d(d_theta, affine = False), nn.ReLU(), nn.Dropout(drop_rate)
         )
         self.weight_mean = Predictor(d_theta, d_theta, d_theta)
         self.weight_logvar = Predictor(d_theta, d_theta, d_theta)

@@ -78,8 +78,9 @@ class Conv2d_fw(nn.Conv2d):  # used in MAML to forward input with fast weight
 class BatchNorm2d_fw(nn.BatchNorm2d):  # used in MAML to forward input with fast weight
     def __init__(self, num_features):
         super(BatchNorm2d_fw, self).__init__(num_features)
-        self.weight.fast = None
-        self.bias.fast = None
+        #self.weight.fast = None
+        #self.bias.fast = None
+        pass
 
     def forward(self, x):
         running_mean = torch.zeros(x.data.size()[1]).cuda()
@@ -137,7 +138,7 @@ def convert_maml_module(module):
         )
     elif isinstance(module, torch.nn.modules.batchnorm.BatchNorm2d):
         module_output = BatchNorm2d_fw(
-            module.num_features,
+            module.num_features, affine = False
         )
 
     for name, child in module.named_children():

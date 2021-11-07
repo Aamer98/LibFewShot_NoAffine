@@ -35,7 +35,7 @@ class ADMLayer(nn.Module):
         self.query_num = query_num
         self.n_k = n_k
         self.device = device
-        self.normLayer = nn.BatchNorm1d(self.way_num * 2, affine=True)
+        self.normLayer = nn.BatchNorm1d(self.way_num * 2, affine=False)
         self.fcLayer = nn.Conv1d(1, 1, kernel_size=2, stride=1, dilation=5, bias=False)
 
     def _cal_cov_matrix_batch(self, feat):  # feature: e *  Batch * descriptor_num * 64

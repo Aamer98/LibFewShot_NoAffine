@@ -39,12 +39,12 @@ class BasicBlock(nn.Module):
     ):
         super(BasicBlock, self).__init__()
         self.conv1 = conv3x3(inplanes, planes)
-        self.bn1 = nn.BatchNorm2d(planes)
+        self.bn1 = nn.BatchNorm2d(planes, affine = False)
         self.relu = nn.LeakyReLU(0.1)
         self.conv2 = conv3x3(planes, planes)
-        self.bn2 = nn.BatchNorm2d(planes)
+        self.bn2 = nn.BatchNorm2d(planes, affine = False)
         self.conv3 = conv3x3(planes, planes)
-        self.bn3 = nn.BatchNorm2d(planes)
+        self.bn3 = nn.BatchNorm2d(planes, affine = False)
         self.maxpool = nn.MaxPool2d(stride)
         self.downsample = downsample
         self.stride = stride
@@ -143,8 +143,9 @@ class ResNet(nn.Module):
             if isinstance(m, nn.Conv2d):
                 nn.init.kaiming_normal_(m.weight, mode="fan_out", nonlinearity="leaky_relu")
             elif isinstance(m, nn.BatchNorm2d):
-                nn.init.constant_(m.weight, 1)
-                nn.init.constant_(m.bias, 0)
+                #nn.init.constant_(m.weight, 1)
+                #nn.init.constant_(m.bias, 0)
+                pass
 
     def _make_layer(
         self,
@@ -166,7 +167,7 @@ class ResNet(nn.Module):
                     stride=1,
                     bias=False,
                 ),
-                nn.BatchNorm2d(planes * block.expansion),
+                nn.BatchNorm2d(planes * block.expansion, affine = False),
             )
 
         layers = []
