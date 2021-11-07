@@ -17,7 +17,7 @@
 nvidia-smi
 
 module load python/3.7
-source ~/py37/bin/activate
+source ~/my_env/bin/activate
 
 echo "------------------------------------< Data preparation>----------------------------------"
 echo "Copying the source code"
@@ -51,7 +51,6 @@ date +"%T"
 
 cd ..
 python run_trainer.py --shot_num 1 --data_root ./dataset/miniImageNet--ravi --conf_file ./config/reproduce/Proto/ProtoNet-miniImageNet-Conv64F-5-1-Table2.yaml
-C:\Users\Aamer\Source\Repos\LibFewShot\config
 # python run_trainer.py --shot_num 1 --data_root ./dataset/tiered_imagenet --conf_file ./config/proto.yaml
 
 python run_trainer.py --shot_num 5 --data_root ./dataset/miniImageNet--ravi --conf_file ./config/reproduce/Proto/ProtoNet-miniImageNet-Conv64F-5-5-Table2.yaml
