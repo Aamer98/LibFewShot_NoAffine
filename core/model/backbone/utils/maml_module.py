@@ -138,7 +138,7 @@ def convert_maml_module(module):
         )
     elif isinstance(module, torch.nn.modules.batchnorm.BatchNorm2d):
         module_output = BatchNorm2d_fw(
-            module.num_features, affine = False
+            module.num_features
         )
 
     for name, child in module.named_children():
