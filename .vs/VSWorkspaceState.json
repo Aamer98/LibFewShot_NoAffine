@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\config\\reproduce",
+    "\\config\\reproduce\\Baseline",
+    "\\config\\reproduce\\MAML",
+    "\\core\\model\\backbone",
+    "\\core\\model\\backbone\\utils",
+    "\\core\\model\\finetuning",
+    "\\core\\model\\meta",
+    "\\core\\model\\metric",
+    "\\jobs"
+  ],
+  "SelectedNode": "\\jobs\\train_baseline.sh",
+  "PreviewInSolutionExplorer": false
+}

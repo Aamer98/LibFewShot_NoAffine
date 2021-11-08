@@ -5,7 +5,7 @@
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-type=REQUEUE
 #SBATCH --mail-type=ALL
-#SBATCH --job-name=train_MAML
+#SBATCH --job-name=train_MAML_noAffine
 #SBATCH --output=%x-%j.out
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:2
@@ -23,7 +23,7 @@ echo "------------------------------------< Data preparation>-------------------
 echo "Copying the source code"
 date +"%T"
 cd $SLURM_TMPDIR
-cp -r ~/scratch/LibFewShot .
+cp -r ~/scratch/LibFewShot_NoAffine .
 
 echo "Copying the datasets"
 date +"%T"
@@ -31,7 +31,7 @@ cp -r ~/scratch/LibFewShot_Dataset/* .
 
 echo "Extract to dataset folder"
 date +"%T"
-cd LibFewShot/dataset
+cd LibFewShot_NoAffine/dataset
 
 # tar -xf $SLURM_TMPDIR/CIFAR100.tar.gz
 # tar -xf $SLURM_TMPDIR/CUB_200_2011_FewShot.tar.gz
@@ -59,4 +59,4 @@ python run_trainer.py --shot_num 5 --data_root ./dataset/miniImageNet--ravi --co
 wait
 
 cd $SLURM_TMPDIR
-cp -r $SLURM_TMPDIR/LibFewShot/results/ ~/scratch/LibFewShot/results/
+cp -r $SLURM_TMPDIR/LibFewShot_NoAffine/results/ ~/scratch/LibFewShot_NoAffine/

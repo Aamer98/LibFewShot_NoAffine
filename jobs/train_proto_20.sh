@@ -5,7 +5,7 @@
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-type=REQUEUE
 #SBATCH --mail-type=ALL
-#SBATCH --job-name=train_ProtoNet_20
+#SBATCH --job-name=train_ProtoNet_20_NoAffine
 #SBATCH --output=%x-%j.out
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:2
@@ -56,4 +56,4 @@ python run_trainer.py --shot_num 20 --data_root ./dataset/miniImageNet--ravi --c
 wait
 
 cd $SLURM_TMPDIR
-cp -r $SLURM_TMPDIR/LibFewShot_NoAffine/results/ ~/scratch/LibFewShot_NoAffine/results/
+cp -r $SLURM_TMPDIR/LibFewShot_NoAffine/results/ ~/scratch/LibFewShot_NoAffine/
