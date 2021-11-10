@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
+import argparse
+from core import Trainer
+from core import Test
+from core.config import Config
+import os
 import sys
 
 sys.dont_write_bytecode = True
 
-import os
 
-from core.config import Config
-from core import Test
 
 parser = argparse.ArgumentParser(description='LibFewShot Training')
 
