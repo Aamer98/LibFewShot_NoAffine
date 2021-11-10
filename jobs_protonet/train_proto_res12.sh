@@ -5,7 +5,7 @@
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-type=REQUEUE
 #SBATCH --mail-type=ALL
-#SBATCH --job-name=train_ProtoNet_20_NoAffine
+#SBATCH --job-name=train_ProtoNet_res12_NoAffine
 #SBATCH --output=%x-%j.out
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:2
@@ -50,8 +50,11 @@ echo "---------------------------------------<Run the program>------------------
 date +"%T"
 
 cd ..
-python run_trainer.py --shot_num 20 --data_root ./dataset/miniImageNet--ravi --conf_file ./config/reproduce/Proto/ProtoNet-miniImageNet-Conv64F-5-20-Table2.yaml
+python run_trainer.py --shot_num 1 --data_root ./dataset/miniImageNet--ravi --conf_file ./config/reproduce/Proto/ProtoNet_1shot_resnet12.yaml
+# python run_trainer.py --shot_num 1 --data_root ./dataset/tiered_imagenet --conf_file ./config/proto.yaml
 
+python run_trainer.py --shot_num 5 --data_root ./dataset/miniImageNet--ravi --conf_file ./config/reproduce/Proto/ProtoNet_5shot_resnet12.yaml
+# python run_trainer.py --shot_num 5 --data_root ./dataset/tiered_imagenet --conf_file ./config/proto.yaml
 
 wait
 

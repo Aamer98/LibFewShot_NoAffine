@@ -9,15 +9,25 @@ backbone:
     leaky_relu: false
     maxpool_last2: true
     negative_slope: 0.2
-  name: Conv64F
+  name: resnet_12
 batch_size: 128
 classifier:
-  kwargs: null
-  name: ProtoNet
+  name: Baseline
+  kwargs:
+    inner_param:
+      inner_optim:
+        name: SGD
+        kwargs:
+          lr: 1e-2
+          weight_decay: 0.0005
+      inner_train_iter: 100
+      inner_batch_size: 4
+    feat_dim: 1600
+    num_class: 64
 data_root: null
 deterministic: true
 device_ids: 0,1
-episode_size: 1
+episode_size: 2
 epoch: 100
 image_size: 84
 includes:
@@ -26,8 +36,8 @@ includes:
 - headers/misc.yaml
 - headers/model.yaml
 - headers/optimizer.yaml
-- classifiers/Proto.yaml
-- backbones/Conv64F.yaml
+- classifiers/Baseline.yaml
+- backbones/resnet_12.yaml
 log_interval: 100
 log_level: info
 log_name: null
@@ -40,28 +50,30 @@ lr_scheduler:
 n_gpu: 2
 optimizer:
   kwargs:
-    lr: 0.001
+    lr: 0.01
     weight_decay: 0.0005
   name: SGD
-  other: null
+  other:
+    emb_func: 0.01
 parallel_part:
 - emb_func
 pretrain_path: null
 query_num: 15
+rank: 0
 result_root: ./results
 resume: false
 save_interval: 10
 save_part:
 - emb_func
-seed: 0
-shot_num: 5
+seed: 12
+shot_num: 1
 tag: null
-tb_scale: 10.0
-test_episode: 1000
+tb_scale: 8.333333333333334
+test_episode: 600
 test_epoch: 5
 test_query: 15
-test_shot: 5
+test_shot: 1
 test_way: 5
-train_episode: 10000
+train_episode: 5000
 use_memory: false
 way_num: 5

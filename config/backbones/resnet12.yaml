@@ -1,7 +1,7 @@
 backbone:
   name: resnet12
   kwargs:
-    keep_prob: 0.0
+    keep_prob: 0.9
     avg_pool: True
     is_flatten: True
     maxpool_last2: True
