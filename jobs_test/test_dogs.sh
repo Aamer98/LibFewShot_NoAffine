@@ -8,7 +8,7 @@
 #SBATCH --job-name=test_in_dogs
 #SBATCH --output=%x-%j.out
 #SBATCH --nodes=1
-#SBATCH --gres=gpu:1
+#SBATCH --gres=gpu:2
 #SBATCH --ntasks-per-node=32
 #SBATCH --mem=127000M
 #SBATCH --time=12-00:00
