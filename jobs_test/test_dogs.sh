@@ -5,13 +5,13 @@
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-type=REQUEUE
 #SBATCH --mail-type=ALL
-#SBATCH --job-name=test_in_dogs
+#SBATCH --job-name=train_Baseline_NoAffine
 #SBATCH --output=%x-%j.out
 #SBATCH --nodes=1
-#SBATCH --gres=gpu:2
+#SBATCH --gres=gpu:1
 #SBATCH --ntasks-per-node=32
 #SBATCH --mem=127000M
-#SBATCH --time=12-00:00
+#SBATCH --time=0-12:00
 #SBATCH --account=rrg-ebrahimi
 
 nvidia-smi
