@@ -42,6 +42,7 @@ VAR_DICT = {
 
 if __name__ == "__main__":
     for PATH in Path_list:
+        print('\\\\\\\\\\\\\\\\\\\\' + PATH + '>>>>>>>>>>>>>>>>>>>>>>>>>>>' )
         config = Config(os.path.join(PATH, "config.yaml"),
                     VAR_DICT).get_config_dict()
         test = Test(config, PATH)

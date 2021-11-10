@@ -33,14 +33,14 @@ echo "Extract to dataset folder"
 date +"%T"
 cd LibFewShot_NoAffine/dataset
 
-tar -xf $SLURM_TMPDIR/CIFAR100.tar.gz
-tar -xf $SLURM_TMPDIR/CUB_200_2011_FewShot.tar.gz
+#tar -xf $SLURM_TMPDIR/CIFAR100.tar.gz
+#tar -xf $SLURM_TMPDIR/CUB_200_2011_FewShot.tar.gz
 tar -xf $SLURM_TMPDIR/CUB_birds_2010.tar.gz
-tar -xf $SLURM_TMPDIR/StanfordCar.tar.gz
-tar -xf $SLURM_TMPDIR/StanfordDog.tar.gz
+#tar -xf $SLURM_TMPDIR/StanfordCar.tar.gz
+#tar -xf $SLURM_TMPDIR/StanfordDog.tar.gz
 
-tar -xf $SLURM_TMPDIR/miniImageNet--ravi.tar.gz
-cat $SLURM_TMPDIR/tieredImageNet.tar.gz* | tar -zxf -
+#tar -xf $SLURM_TMPDIR/miniImageNet--ravi.tar.gz
+#cat $SLURM_TMPDIR/tieredImageNet.tar.gz* | tar -zxf -
 
 echo "----------------------------------< End of data preparation>--------------------------------"
 date +"%T"
