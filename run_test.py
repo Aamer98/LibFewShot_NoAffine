@@ -36,7 +36,7 @@ VAR_DICT = {
 
 if __name__ == "__main__":
     for PATH in Path_list:
-        config = Config(os.path.join(result_path, "config.yaml"),
+        config = Config(os.path.join(test_in_bird-220100.out, "config.yaml"),
                     VAR_DICT).get_config_dict()
         test = Test(config, PATH)
         test.test_loop()
