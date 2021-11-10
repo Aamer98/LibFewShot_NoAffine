@@ -9,6 +9,12 @@ import sys
 sys.dont_write_bytecode = True
 
 
+import argparse
+from core import Trainer
+from core import Test
+from core.config import Config
+import os
+import sys
 
 parser = argparse.ArgumentParser(description='LibFewShot Training')
 
@@ -36,7 +42,7 @@ VAR_DICT = {
 
 if __name__ == "__main__":
     for PATH in Path_list:
-        config = Config(os.path.join(test_in_bird-220100.out, "config.yaml"),
+        config = Config(os.path.join(PATH, "config.yaml"),
                     VAR_DICT).get_config_dict()
         test = Test(config, PATH)
         test.test_loop()
