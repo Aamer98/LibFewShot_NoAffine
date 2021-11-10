@@ -50,10 +50,10 @@ echo "---------------------------------------<Run the program>------------------
 date +"%T"
 
 cd ..
-python run_trainer.py --shot_num 1 --data_root ./dataset/miniImageNet--ravi --conf_file ./config/reproduce/Proto/ProtoNet_1shot_resnet12.yaml
+python run_trainer.py --shot_num 1 --data_root ./dataset/miniImageNet--ravi --conf_file ./config/reproduce/Proto/ProtoNet_1shot_resnet.yaml
 # python run_trainer.py --shot_num 1 --data_root ./dataset/tiered_imagenet --conf_file ./config/proto.yaml
 
-python run_trainer.py --shot_num 5 --data_root ./dataset/miniImageNet--ravi --conf_file ./config/reproduce/Proto/ProtoNet_5shot_resnet12.yaml
+python run_trainer.py --shot_num 5 --data_root ./dataset/miniImageNet--ravi --conf_file ./config/reproduce/Proto/ProtoNet_5shot_resnet.yaml
 # python run_trainer.py --shot_num 5 --data_root ./dataset/tiered_imagenet --conf_file ./config/proto.yaml
 
 wait
