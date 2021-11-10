@@ -8,17 +8,35 @@ import os
 from core.config import Config
 from core import Test
 
-PATH = "./results/RelationNet-miniImageNet--ravi-resnet18-5-1-Aug-22-2021_21-22-02"
+parser = argparse.ArgumentParser(description='LibFewShot Training')
+
+parser.add_argument('--data_root', default='./dataset/miniImageNet--ravi',  help='path to dataset')
+
+
+Path_list = ['./results/Baseline-miniImageNet--ravi-Conv64F-5-1-Nov-08-2021-08-56-06',
+             './results/Baseline-miniImageNet--ravi-Conv64F-5-5-Nov-08-2021-12-10-08',
+             './results/MAML-miniImageNet--ravi-Conv64F-5-1-Nov-08-2021-08-56-07',
+             './results/MAML-miniImageNet--ravi-Conv64F-5-5-Nov-08-2021-17-16-52',
+             './results/ProtoNet-miniImageNet--ravi-Conv64F-5-1-Nov-08-2021-08-56-22',
+             './results/ProtoNet-miniImageNet--ravi-Conv64F-5-20-Nov-08-2021-08-56-15',
+             './results/ProtoNet-miniImageNet--ravi-Conv64F-5-5-Nov-08-2021-12-03-26']
+
+args = parser.parse_args()
 VAR_DICT = {
+    "data_root": args.data_root,
     "test_epoch": 5,
-    "device_ids": "2",
+    "device_ids": "0",
     "n_gpu": 1,
-    "test_episode": 600,
+    "test_episode": 2000,
     "episode_size": 1,
-    "test_way": 6,
-}
+    "test_way": 5}
+
 
 if __name__ == "__main__":
-    config = Config(os.path.join(PATH, "config.yaml"), VAR_DICT).get_config_dict()
-    test = Test(config, PATH)
-    test.test_loop()
+    for PATH in Path_list:
+        config = Config(os.path.join(result_path, "config.yaml"),
+                    VAR_DICT).get_config_dict()
+        test = Test(config, PATH)
+        test.test_loop()
+
+
