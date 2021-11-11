@@ -51,10 +51,10 @@ echo "---------------------------------------<Run the program>------------------
 date +"%T"
 
 cd ..
-python run_test.py --data_root ./dataset/plant_disease --weight_root ./results/ProtoNet-miniImageNet--ravi-Conv64F-5-1-Nov-10-2021-05-19-50
+python run_test.py --data_root ./dataset/plant_disease
 
 
-python run_test.py --data_root ./dataset/plant_disease --weight_root ./results/ProtoNet-miniImageNet--ravi-Conv64F-5-5-Nov-10-2021-11-17-21
+#python run_test.py --data_root ./dataset/plant_disease --weight_root ./results/ProtoNet-miniImageNet--ravi-Conv64F-5-5-Nov-10-2021-11-17-21
 
 wait
 
