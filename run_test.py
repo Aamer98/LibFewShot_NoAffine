@@ -37,7 +37,7 @@ VAR_DICT = {
 if __name__ == "__main__":
     print('\\\\\\\\\\\\\\\\\\\\' + weight_root + '>>>>>>>>>>>>>>>>>>>>>>>>>>>' )
     print('\\\\\\\\\\\\\\\\\\\\' + args.data_root + '>>>>>>>>>>>>>>>>>>>>>>>>>>>' )
-    config = Config(os.path.join(args.weight_root, "config.yaml"),
+    config = Config(os.path.join(weight_root, "config.yaml"),
                     VAR_DICT).get_config_dict()
     test = Test(config, weight_root)
     test.test_loop()
