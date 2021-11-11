@@ -1,4 +1,4 @@
-data_root: ./dataset/miniImageNet--ravi
+data_root: None
 image_size: 84
 use_memory: False
 augment: True
