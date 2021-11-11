@@ -8,7 +8,7 @@
 #SBATCH --job-name=proto_conv64_plant_1shot
 #SBATCH --output=%x-%j.out
 #SBATCH --nodes=1
-#SBATCH --gres=gpu:2
+#SBATCH --gres=gpu:1
 #SBATCH --ntasks-per-node=32
 #SBATCH --mem=127000M
 #SBATCH --time=0-12:00
@@ -54,7 +54,7 @@ cd ..
 python run_test.py --data_root ./dataset/plant_disease --weight-root ./results/ProtoNet-miniImageNet--ravi-Conv64F-5-1-Nov-10-2021-05-19-50
 
 
-python run_test.py --data_root ./datasetplant_disease --weight-root ./results/ProtoNet-miniImageNet--ravi-Conv64F-5-5-Nov-10-2021-11-17-21
+python run_test.py --data_root ./dataset/plant_disease --weight-root ./results/ProtoNet-miniImageNet--ravi-Conv64F-5-5-Nov-10-2021-11-17-21
 
 wait
 
