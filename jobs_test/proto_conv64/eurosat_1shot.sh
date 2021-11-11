@@ -32,7 +32,7 @@ cp -r ~/scratch/LibFewShot_Dataset/* .
 echo "Extract to dataset folder"
 date +"%T"
 cd LibFewShot_NoAffine/dataset
-
+ls
 #tar -xf $SLURM_TMPDIR/CIFAR100.tar.gz
 #tar -xf $SLURM_TMPDIR/CUB_200_2011_FewShot.tar.gz
 #tar -xf $SLURM_TMPDIR/CUB_birds_2010.tar.gz
