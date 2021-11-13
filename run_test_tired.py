@@ -22,8 +22,8 @@ parser.add_argument('--data_root', default='./dataset/miniImageNet--ravi',  help
 #parser.add_argument('--weight_root', default='./results/ProtoNet-miniImageNet--ravi-Conv64F-5-1-Nov-10-2021-05-19-50', help = 'path to weight')
 
 
-#wgt = 'Baseline-tiered_imagenet-Conv64F_no_affine-5-1-freeitter-Nov-10-2021-16-30-12'
-wgt = 'Baseline-tiered_imagenet-Conv64F_no_affine-5-5-freeitter-Nov-10-2021-21-06-27'
+wgt = 'Baseline-tiered_imagenet-Conv64F_no_affine-5-1-freeitter-Nov-10-2021-16-30-12'
+#wgt = 'Baseline-tiered_imagenet-Conv64F_no_affine-5-5-freeitter-Nov-10-2021-21-06-27'
 
 weight_root = './result_mosy/' + wgt
 
