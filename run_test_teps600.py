@@ -26,11 +26,11 @@ weight_root = './results/ProtoNet-miniImageNet--ravi-Conv64F-5-1-Nov-10-2021-05-
 args = parser.parse_args()
 VAR_DICT = {
     "data_root": args.data_root,
-    "test_epoch": 5,
+    "test_epoch": 1,
     "device_ids": "0",
     "n_gpu": 2,
-    "test_episode": 2000,
-    "episode_size": 600,
+    "test_episode": 600,
+    "episode_size": 1,
     "test_way": 5}
 
 
