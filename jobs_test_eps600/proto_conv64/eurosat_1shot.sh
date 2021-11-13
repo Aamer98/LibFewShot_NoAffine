@@ -5,7 +5,7 @@
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-type=REQUEUE
 #SBATCH --mail-type=ALL
-#SBATCH --job-name=proto_conv64_eurosat_1shot
+#SBATCH --job-name=proto_conv64_eurosat_5shot
 #SBATCH --output=%x-%j.out
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:1
@@ -17,7 +17,7 @@
 nvidia-smi
 
 module load python/3.7
-source ~/my_env6/bin/activate
+source ~/my_env7/bin/activate
 
 echo "------------------------------------< Data preparation>----------------------------------"
 echo "Copying the source code"
@@ -51,7 +51,7 @@ echo "---------------------------------------<Run the program>------------------
 date +"%T"
 
 cd ..
-python run_test.py --data_root ./dataset/eurosat
+python run_test_eps600.py --data_root ./dataset/eurosat
 
 
 #python run_test.py --data_root ./dataset/eurosat --weight_root ./results/ProtoNet-miniImageNet--ravi-Conv64F-5-5-Nov-10-2021-11-17-21
